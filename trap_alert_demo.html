@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b2d">
+<title>TRAP ALERT — Sensibilisation aux arnaques</title>
+<style>
+:root{--navy:#101b2d;--blue:#1e3a5f;--red:#d94b4b;--green:#16845b;--bg:#f3f6fa;--ink:#172235;--muted:#65738a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+header{background:var(--navy);color:white;padding:22px 18px 30px}
+.wrap{max-width:850px;margin:auto}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--red);display:grid;place-items:center;font-size:22px}
+h1{font-size:clamp(28px,6vw,42px);line-height:1.05;margin:28px 0 10px}
+header p{color:#d0d9e5;max-width:620px;line-height:1.55}
+main{max-width:850px;margin:-12px auto 40px;padding:0 14px}
+.panel{background:white;border:1px solid #e2e8f0;border-radius:18px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #1722350b}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--red)}
+h2{margin:6px 0 8px;font-size:22px}.muted{color:var(--muted);line-height:1.55}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button,a.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:750;text-decoration:none;cursor:pointer;font-size:14px}
+.primary{background:var(--navy);color:white}.secondary{background:#e9eef5;color:var(--navy)}
+.notice{border-left:4px solid #d99a22;background:#fff8e8;padding:12px 14px;border-radius:8px;color:#6d4c13;font-size:14px;line-height:1.5}
+.mail{border:1px solid #dce3ed;border-radius:14px;overflow:hidden;margin-top:15px}
+.mailtop{background:#f7f9fc;padding:13px 15px;font-size:13px;color:#46546a;border-bottom:1px solid #e4eaf1}
+.mailbody{padding:18px;line-height:1.6}.fakebutton{display:inline-block;background:#175fba;color:white;padding:11px 16px;border-radius:7px;font-weight:700;margin:8px 0}
+.hidden{display:none}.result{border-radius:12px;padding:14px;background:#eaf7f0;border:1px solid #c7ead6;margin-top:14px}
+ul{padding-left:20px;line-height:1.7}footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+.pill{display:inline-block;border-radius:30px;padding:5px 9px;background:#edf2f8;color:#46546a;font-size:11px;font-weight:800}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="brand"><div class="logo">⚠</div><div>TRAP ALERT <small style="display:block;color:#a9b8cb;font-size:10px;letter-spacing:.14em">CYBER AWARENESS & PROTECTION</small></div></div>
+ <h1>Repère le piège.<br>Protège-toi.</h1>
+ <p>Une expérience pédagogique pour apprendre à reconnaître les faux messages, les liens suspects et les tentatives d'hameçonnage.</p>
+</div></header>
+<main>
+ <section class="panel">
+  <div class="kicker">ESPACE DE FORMATION</div><h2>Teste ton réflexe anti-arnaque</h2>
+  <p class="muted">Lis le message ci-dessous comme si tu venais de le recevoir. Choisis ensuite ce que tu ferais. Cette démonstration est locale : aucune donnée n'est envoyée ni enregistrée.</p>
+  <div class="mail">
+   <div class="mailtop"><b>Expéditeur :</b> Service Livraison — notification@exemple.invalid<br><b>Objet :</b> Votre colis est en attente</div>
+   <div class="mailbody">
+    <span class="pill">SIMULATION FICTIVE</span>
+    <p>Bonjour,</p>
+    <p>Nous n'avons pas pu remettre votre colis. Des frais de régularisation de <b>1 250 FCFA</b> seraient nécessaires pour programmer une nouvelle livraison aujourd'hui.</p>
+    <p style="text-align:center"><span class="fakebutton">Régler les frais</span></p>
+    <p style="font-size:12px;color:#65738a">Référence fictive : TA-0000 · Aucun paiement n'est possible depuis cette page.</p>
+   </div>
+  </div>
+  <h3>Que ferais-tu ?</h3>
+  <div class="actions">
+   <button class="primary" onclick="showResult('safe')">Je vérifie sur le site officiel</button>
+   <button class="secondary" onclick="showResult('risk')">Je clique pour payer vite</button>
+   <button class="secondary" onclick="showResult('report')">Je signale et je bloque</button>
+  </div>
+  <div id="result" class="result hidden" aria-live="polite"></div>
+ </section>
+ <section class="panel">
+  <div class="kicker">LIEN DE RÉSOLUTION</div><h2>Comprendre les signaux d'alerte</h2>
+  <p class="muted">Dans une campagne réelle, le deuxième lien ouvre cette explication après le test. Ici, il est intégré à la démonstration.</p>
+  <button class="primary" onclick="document.getElementById('lesson').classList.toggle('hidden')">Afficher la correction</button>
+  <div id="lesson" class="hidden">
+   <ul>
+    <li><b>Urgence artificielle :</b> « aujourd'hui » pousse à agir sans réfléchir.</li>
+    <li><b>Demande d'argent inattendue :</b> vérifie les frais directement auprès du transporteur.</li>
+    <li><b>Expéditeur à contrôler :</b> le nom affiché ne prouve pas l'identité de l'expéditeur.</li>
+    <li><b>Lien à vérifier :</b> ne te fie pas au bouton ; ouvre toi-même l'application ou le site officiel.</li>
+   </ul>
+   <div class="notice">Règle d'or : ne saisis jamais ton mot de passe, ton code OTP ou tes coordonnées bancaires après avoir suivi un lien reçu par message.</div>
+  </div>
+ </section>
+ <section class="panel">
+  <div class="kicker">VERSION DE DÉMONSTRATION</div><h2>Conçu pour apprendre, pas pour piéger réellement</h2>
+  <p class="muted">Cette maquette ne collecte aucun identifiant, numéro de téléphone, donnée bancaire ou adresse IP. Pour une campagne auprès d'une entreprise, les participants doivent être informés dans le cadre d'un exercice autorisé, avec des résultats agrégés et anonymisés.</p>
+ </section>
+</main>
+<footer>TRAP ALERT · Prototype pédagogique · Version 0.1</footer>
+<script>
+function showResult(choice){
+ const box=document.getElementById('result');
+ const messages={
+ safe:"Bonne réaction. Ouvre toi-même l'application ou le site officiel du transporteur pour vérifier le statut du colis.",
+ risk:"Attention : cliquer sous la pression et payer depuis un lien reçu est risqué. Vérifie d'abord par un canal officiel.",
+ report:"Bonne réaction si le message est inattendu. Tu peux aussi vérifier le colis directement auprès du transporteur par ses coordonnées officielles."
+ };
+ box.textContent=messages[choice];box.classList.remove('hidden');
+}
+</script>
+</body></html>
